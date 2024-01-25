@@ -114,7 +114,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("QueryPermissionsNeeded")
     private fun handleEvents(event: Event) {
         when (event) {
             is Event.ErrorFetchingItems -> {

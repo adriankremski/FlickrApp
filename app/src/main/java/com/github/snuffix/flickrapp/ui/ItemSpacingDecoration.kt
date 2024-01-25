@@ -7,7 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemSpacingDecoration(context: Context, private val gridSpanCount: Int = 3) :
+class ItemSpacingDecoration(context: Context, private val maxGridSpanCount: Int = 3) :
     RecyclerView.ItemDecoration() {
 
     private val spacing: Int = TypedValue.applyDimension(
@@ -26,20 +26,12 @@ class ItemSpacingDecoration(context: Context, private val gridSpanCount: Int = 3
         val layoutManager = parent.layoutManager
 
         if (layoutManager is GridLayoutManager) {
-            val column = position % gridSpanCount
-            val row = position / gridSpanCount
+            val column = position % maxGridSpanCount
+            val row = position / maxGridSpanCount
 
             // Add spacing to the right and bottom, except for the last column and last row
-            outRect.right = spacing
-            outRect.bottom = spacing
-
-            if (column == gridSpanCount - 1) {
-                outRect.right = 0
-            }
-
-            if (row == layoutManager.spanCount - 1) {
-                outRect.bottom = 0
-            }
+            outRect.right = if (column == maxGridSpanCount - 1) 0 else spacing
+            outRect.bottom = if (row == layoutManager.spanCount - 1) 0 else spacing
         } else {
             outRect.bottom = spacing
         }
