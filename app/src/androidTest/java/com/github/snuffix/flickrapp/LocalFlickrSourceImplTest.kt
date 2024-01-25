@@ -5,7 +5,6 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.github.snuffix.flickrapp.data.local.FlickrDatabase
 import com.github.snuffix.flickrapp.data.local.LocalFlickrSourceImpl
-import com.github.snuffix.flickrapp.repository.FlickrItem
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -62,11 +61,12 @@ class LocalFlickrSourceImplTest {
     }
 }
 
-fun flickrItem() = FlickrItem(
+fun flickrItem() = com.github.snuffix.domain.repository.FlickrItem(
     title = randomId(),
     imageUrl = randomId(),
     description = randomId(),
-    published = Date()
+    published = Date(),
+    link = ""
 )
 
 private fun randomId() = UUID.randomUUID().toString()

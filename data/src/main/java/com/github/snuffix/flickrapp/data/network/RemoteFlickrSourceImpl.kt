@@ -1,7 +1,7 @@
 package com.github.snuffix.flickrapp.data.network
 
-import com.github.snuffix.flickrapp.repository.RemoteFlickrSource
-import com.github.snuffix.flickrapp.repository.FlickrItem
+import com.github.snuffix.domain.repository.FlickrItem
+import com.github.snuffix.domain.repository.RemoteFlickrSource
 
 class RemoteFlickrSourceImpl(
     private val apiService: FlickrApiService,

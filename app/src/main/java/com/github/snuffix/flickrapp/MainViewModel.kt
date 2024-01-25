@@ -4,9 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.michaelbull.result.onFailure
 import com.github.michaelbull.result.onSuccess
-import com.github.snuffix.flickrapp.repository.FlickrItem
-import com.github.snuffix.flickrapp.repository.FlickrRepository
-import com.github.snuffix.flickrapp.repository.RepositoryError
+import com.github.snuffix.domain.repository.FlickrItem
+import com.github.snuffix.domain.repository.FlickrRepository
+import com.github.snuffix.domain.repository.RepositoryError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
@@ -48,13 +48,8 @@ class MainViewModel @Inject constructor(
     init {
         refresh
             .onStart { emit(Unit) }
-            .onEach {
-                _showLoading.emit(true)
-                _showFullScreenError.emit(false)
-            }
-            .flatMapLatest {
-                repository.getFlickrItems()
-            }
+            .onEach { _showLoading.emit(true) }
+            .flatMapLatest { repository.getFlickrItems() }
             .onEach { result ->
                 _showLoading.emit(false)
 

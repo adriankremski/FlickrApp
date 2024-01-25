@@ -1,4 +1,4 @@
-package com.github.snuffix.flickrapp.repository
+package com.github.snuffix.domain.repository
 
 import com.github.michaelbull.result.Result
 import kotlinx.coroutines.flow.Flow

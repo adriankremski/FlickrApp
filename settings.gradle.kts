@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "FlickrApp"
 include(":app")
- 
+include(":data")
+include(":domain")

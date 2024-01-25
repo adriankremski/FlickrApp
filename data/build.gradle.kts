@@ -1,25 +1,19 @@
 plugins {
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.hilt)
     kotlin("kapt")
 }
 
 android {
-    namespace = "com.github.snuffix.flickrapp"
+    namespace = "com.github.snuffix.flickrapp.data"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.github.snuffix.flickrapp"
         minSdk = libs.versions.minSdk.get().toInt()
-        targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -35,48 +29,30 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
     kotlinOptions {
         jvmTarget = "11"
-    }
-    buildFeatures {
-        viewBinding = true
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
 dependencies {
     implementation(project(":domain"))
-    implementation(project(":data"))
-
     implementation(libs.kotlin.result)
     implementation(libs.kotlin.result.coroutines)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.room.runtime)
-    implementation(libs.material)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.coil)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.moshi.adapters)
+    implementation(libs.moshi.kotlin)
+    implementation(libs.converter.moshi)
     implementation(libs.hilt.android)
-    implementation(libs.core.ktx)
-    implementation(libs.androidx.window)
-    implementation(libs.androidx.window.core.jvm)
+    implementation(libs.retrofit)
 
+    kapt(libs.androidx.room.compiler)
     kapt(libs.hilt.android.compiler)
-
+    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    testImplementation(libs.junit)
-
-    testImplementation(libs.kotlin.result)
-    testImplementation(libs.kotlin.result.coroutines)
-    testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.turbine)
 }

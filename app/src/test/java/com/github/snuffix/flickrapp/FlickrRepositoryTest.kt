@@ -3,11 +3,9 @@ package com.github.snuffix.flickrapp
 import app.cash.turbine.test
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok
-import com.github.snuffix.flickrapp.repository.FlickrItem
-import com.github.snuffix.flickrapp.repository.FlickrRepositoryImpl
-import com.github.snuffix.flickrapp.repository.LocalFlickrSource
-import com.github.snuffix.flickrapp.repository.RemoteFlickrSource
-import com.github.snuffix.flickrapp.repository.RepositoryError
+import com.github.snuffix.domain.repository.FlickrRepositoryImpl
+import com.github.snuffix.domain.repository.LocalFlickrSource
+import com.github.snuffix.domain.repository.RemoteFlickrSource
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
@@ -23,9 +21,10 @@ class FlickrRepositoryImplTest {
 
     private val remoteFlickrSource: RemoteFlickrSource = mock()
     private val localFlickrSource: LocalFlickrSource = mock()
-    private val flickrRepository: FlickrRepositoryImpl = FlickrRepositoryImpl(
-        remoteFlickrSource, localFlickrSource
-    )
+    private val flickrRepository: FlickrRepositoryImpl =
+        FlickrRepositoryImpl(
+            remoteFlickrSource, localFlickrSource
+        )
 
     @Test
     fun `getFlickrItems should emit cached items and then error if it occurs`() =
@@ -43,7 +42,7 @@ class FlickrRepositoryImplTest {
             // Assert
             resultFlow.test {
                 assertEquals(Ok(cachedItems), awaitItem())
-                assertEquals(Err(RepositoryError.GetFlickrItemsError(cachedItems)), awaitItem())
+                assertEquals(Err(com.github.snuffix.domain.repository.RepositoryError.GetFlickrItemsError(cachedItems)), awaitItem())
                 awaitComplete()
             }
         }
@@ -74,11 +73,12 @@ class FlickrRepositoryImplTest {
         }
 }
 
-fun flickrItem() = FlickrItem(
+fun flickrItem() = com.github.snuffix.domain.repository.FlickrItem(
     title = randomId(),
     imageUrl = randomId(),
     description = randomId(),
-    published = Date()
+    published = Date(),
+    link = randomId()
 )
 
 private fun randomId() = UUID.randomUUID().toString()

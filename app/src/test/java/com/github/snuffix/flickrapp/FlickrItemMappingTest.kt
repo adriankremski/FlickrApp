@@ -35,7 +35,8 @@ class FlickrItemExtensionsTest {
             title = "Test Title",
             imageUrl = "https://example.com/image.jpg",
             description = "Test description",
-            published = Date()
+            published = Date(),
+            link = "https://example.com/image.jpg"
         )
 
         // Act
@@ -55,7 +56,8 @@ class FlickrItemExtensionsTest {
             title = "Test Title",
             media = MediaDTO("https://example.com/image.jpg"),
             description = "Test description",
-            published = Date()
+            published = Date(),
+            link = "https://example.com/image.jpg"
         )
 
         // Act

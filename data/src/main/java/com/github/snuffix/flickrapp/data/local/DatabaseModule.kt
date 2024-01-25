@@ -2,7 +2,7 @@ package com.github.snuffix.flickrapp.data.local
 
 import android.content.Context
 import androidx.room.Room
-import com.github.snuffix.flickrapp.repository.LocalFlickrSource
+import com.github.snuffix.domain.repository.LocalFlickrSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

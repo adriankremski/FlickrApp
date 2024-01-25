@@ -1,4 +1,4 @@
-package com.github.snuffix.flickrapp.repository
+package com.github.snuffix.domain.repository
 
 interface RemoteFlickrSource {
     suspend fun getItems(): List<FlickrItem>

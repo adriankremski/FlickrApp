@@ -1,6 +1,5 @@
 package com.github.snuffix.flickrapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
@@ -18,7 +17,7 @@ import androidx.window.core.layout.WindowSizeClass
 import androidx.window.core.layout.WindowWidthSizeClass
 import androidx.window.layout.WindowMetricsCalculator
 import com.github.snuffix.flickrapp.databinding.ActivityMainBinding
-import com.github.snuffix.flickrapp.repository.FlickrItem
+import com.github.snuffix.domain.repository.FlickrItem
 import com.github.snuffix.flickrapp.ui.FlickItemsAdapter
 import com.github.snuffix.flickrapp.ui.ItemSpacingDecoration
 import dagger.hilt.android.AndroidEntryPoint

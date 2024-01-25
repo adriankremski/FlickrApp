@@ -1,7 +1,7 @@
 package com.github.snuffix.flickrapp.data.local
 
-import com.github.snuffix.flickrapp.repository.LocalFlickrSource
-import com.github.snuffix.flickrapp.repository.FlickrItem
+import com.github.snuffix.domain.repository.FlickrItem
+import com.github.snuffix.domain.repository.LocalFlickrSource
 
 class LocalFlickrSourceImpl(
     private val dao: FlickrDao,

@@ -1,6 +1,6 @@
 package com.github.snuffix.flickrapp.data.network
 
-import com.github.snuffix.flickrapp.repository.RemoteFlickrSource
+import com.github.snuffix.domain.repository.RemoteFlickrSource
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

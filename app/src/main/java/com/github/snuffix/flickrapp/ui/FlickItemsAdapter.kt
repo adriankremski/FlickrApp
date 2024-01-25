@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.github.snuffix.flickrapp.databinding.ItemFlickrBinding
-import com.github.snuffix.flickrapp.repository.FlickrItem
+import com.github.snuffix.domain.repository.FlickrItem
 
 class FlickItemsAdapter(
     private val onItemClick: (FlickrItem) -> Unit
