@@ -15,5 +15,6 @@ fun FlickrItemDTO.toDomainModel() = FlickrItem(
     title = title,
     imageUrl = media.url,
     description = description,
-    published = published
+    published = published,
+    link = link
 )

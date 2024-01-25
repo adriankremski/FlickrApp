@@ -21,7 +21,8 @@ fun FlickrItem.toDatabaseModel() = FlickrItemEntity(
     title = title,
     imageUrl = imageUrl,
     description = description,
-    published = published
+    published = published,
+    link = link
 )
 
 fun FlickrItemEntity.toDomainModel() = FlickrItem(
@@ -29,4 +30,5 @@ fun FlickrItemEntity.toDomainModel() = FlickrItem(
     imageUrl = imageUrl,
     description = description,
     published = published,
+    link = link
 )

@@ -10,6 +10,7 @@ class FlickrItemDTO(
     @Json(name = "media") val media: MediaDTO,
     @Json(name = "description") val description: String,
     @Json(name = "published") val published: Date,
+    @Json(name = "link") val link: String,
 )
 
 @Keep

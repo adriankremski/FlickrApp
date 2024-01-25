@@ -2,6 +2,7 @@ package com.github.snuffix.flickrapp.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
@@ -12,7 +13,7 @@ import com.github.snuffix.flickrapp.databinding.ItemFlickrBinding
 import com.github.snuffix.flickrapp.repository.FlickrItem
 
 class FlickItemsAdapter(
-    private val onItemClick: (String) -> Unit
+    private val onItemClick: (FlickrItem) -> Unit
 ) :
     ListAdapter<FlickrItem, FlickItemsAdapter.ViewHolder>(FlickrItemDiffCallback()) {
 
@@ -28,12 +29,13 @@ class FlickItemsAdapter(
     inner class ViewHolder(private val binding: ItemFlickrBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: FlickrItem) {
-            binding.root.setOnClickListener { onItemClick.invoke(item.imageUrl) }
-
-            with(binding.imageView) {
-                isInvisible = true
-                load(item.imageUrl) {
-                    listener { _, _ -> isVisible = true }
+            with(binding) {
+                root.setOnClickListener { onItemClick.invoke(item) }
+                descriptionTextView.text =
+                    HtmlCompat.fromHtml(item.description, HtmlCompat.FROM_HTML_MODE_LEGACY)
+                imageView.isInvisible = true
+                imageView.load(item.imageUrl) {
+                    listener { _, _ -> imageView.isVisible = true }
                 }
             }
         }

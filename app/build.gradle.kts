@@ -68,6 +68,8 @@ dependencies {
     implementation(libs.converter.moshi)
     implementation(libs.moshi.kotlin)
     implementation(libs.core.ktx)
+    implementation(libs.androidx.window)
+    implementation(libs.androidx.window.core.jvm)
 
     kapt(libs.androidx.room.compiler)
     kapt(libs.hilt.android.compiler)

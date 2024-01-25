@@ -8,6 +8,7 @@ import java.util.Date
 data class FlickrItemEntity(
     @PrimaryKey val id: String,
     val title: String,
+    val link: String,
     val imageUrl: String,
     val description: String,
     val published: Date,

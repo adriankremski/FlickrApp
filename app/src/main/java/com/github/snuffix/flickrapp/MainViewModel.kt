@@ -84,8 +84,15 @@ class MainViewModel @Inject constructor(
             refresh.emit(Unit)
         }
     }
+
+    fun openImage(item: FlickrItem) {
+        viewModelScope.launch {
+            _events.emit(Event.OpenImage(item))
+        }
+    }
 }
 
 sealed class Event {
     data object ErrorFetchingItems : Event()
+    data class OpenImage(val item: FlickrItem) : Event()
 }

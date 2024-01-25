@@ -17,7 +17,9 @@ class FlickrRepositoryImpl @Inject constructor(
 ) : FlickrRepository {
     override fun getFlickrItems(): Flow<Result<List<FlickrItem>, RepositoryError>> = flow {
         val cachedItems = localFlickrSource.getItems()
-        emit(Ok(cachedItems))
+        if (cachedItems.isNotEmpty()) {
+            emit(Ok(cachedItems))
+        }
 
         runSuspendCatching {
             remoteFlickrSource.getItems()
