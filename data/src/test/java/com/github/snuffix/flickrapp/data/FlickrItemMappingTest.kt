@@ -1,4 +1,4 @@
-package com.github.snuffix.flickrapp
+package com.github.snuffix.flickrapp.data
 
 import com.github.snuffix.flickrapp.data.local.FlickrItemEntity
 import com.github.snuffix.flickrapp.data.local.toDatabaseModel
@@ -9,8 +9,9 @@ import com.github.snuffix.flickrapp.data.network.toDomainModel
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
 import java.util.Date
+import java.util.UUID
 
-class FlickrItemExtensionsTest {
+class FlickItemMappingTest {
 
     @Test
     fun `FlickrItem toDatabaseModel converts correctly`() {
@@ -70,3 +71,12 @@ class FlickrItemExtensionsTest {
         assertEquals(flickrItemDTO.published, flickrItem.published)
     }
 }
+fun flickrItem() = com.github.snuffix.domain.repository.FlickrItem(
+    title = randomId(),
+    imageUrl = randomId(),
+    description = randomId(),
+    published = Date(),
+    link = randomId()
+)
+
+private fun randomId() = UUID.randomUUID().toString()

@@ -1,5 +1,3 @@
-package com.github.snuffix.flickrapp
-
 import app.cash.turbine.test
 import com.github.michaelbull.result.Err
 import com.github.michaelbull.result.Ok

@@ -1,4 +1,4 @@
-package com.github.snuffix.flickrapp
+package com.github.snuffix.flickrapp.data
 
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider

@@ -32,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         viewBinding = true
@@ -56,9 +56,6 @@ dependencies {
     implementation(libs.kotlin.result.coroutines)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.room.ktx)
-    implementation(libs.androidx.room.common)
-    implementation(libs.androidx.room.runtime)
     implementation(libs.material)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.coil)
@@ -73,8 +70,8 @@ dependencies {
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    testImplementation(libs.junit)
 
+    testImplementation(libs.junit)
     testImplementation(libs.kotlin.result)
     testImplementation(libs.kotlin.result.coroutines)
     testImplementation(libs.mockito.kotlin)
