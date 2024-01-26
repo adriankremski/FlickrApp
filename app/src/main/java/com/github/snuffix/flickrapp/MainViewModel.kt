@@ -48,7 +48,10 @@ class MainViewModel @Inject constructor(
     init {
         refresh
             .onStart { emit(Unit) }
-            .onEach { _showLoading.emit(true) }
+            .onEach {
+                _showLoading.emit(true)
+                _showFullScreenError.emit(false)
+            }
             .flatMapLatest { repository.getFlickrItems() }
             .onEach { result ->
                 _showLoading.emit(false)
